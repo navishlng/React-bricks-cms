@@ -91,7 +91,7 @@ FormBuilder.schema = {
       name: 'formButtons',
       itemLabel: 'Button',
       itemType: blockNames.Button,
-      min: 1,
+      min: 0,
       max: 2,
     },
   ],

@@ -88,6 +88,8 @@ export default async function Page({
     params.lang
   )
 
+  const tag = decodeURIComponent(params.tag)
+
   return (
     <>
       {!errorNoKeys && (
@@ -96,7 +98,7 @@ export default async function Page({
             <div className="max-w-6xl mx-auto px-8 py-16">
               <div className="flex items-center justify-between  text-gray-900 dark:text-white pb-4 mt-10 sm:mt-12 mb-4">
                 <h1 className="max-w-2xl text-4xl sm:text-6xl lg:text-4xl font-bold tracking-tight">
-                  {params.tag} articles
+                  {tag} articles
                 </h1>
 
                 <Link
