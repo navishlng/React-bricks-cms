@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "app/[lang]/blog/tag/[tag]/page.tsx_",
+    "app/[lang]/blog/tag/[tag]/page-content.tsx_",
+    "app/[lang]/blog/post/[[...slug]]/page.tsx_",
+    "middleware.ts_",
+    "react-bricks/bricks/react-bricks-ui/singleColumnContent/Code/_PrismCode.tsx_hljs_"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
