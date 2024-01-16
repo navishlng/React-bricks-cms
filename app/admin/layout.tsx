@@ -2,7 +2,6 @@ import ReactBricksApp from '@/app/admin/ReactBricksApp'
 import { ThemeProvider } from '@/components/themeProvider'
 
 import '@/css/styles.css'
-import 'react-advanced-cropper/dist/style.css'
 
 export const metadata = {
   title: 'React Bricks Admin',
@@ -14,10 +13,9 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode
 }) {
-  const switchThemeDuration = 10
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`bg-slate-50 dark:bg-[#0d1117] ${switchThemeDuration}`}>
+      <body className={`dark:bg-gray-900`}>
         <ThemeProvider
           attribute="class"
           storageKey="color-mode"

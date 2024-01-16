@@ -16,7 +16,7 @@ yarn create reactbricks-app
 Otherwise you can directly clone this repo:
 
 ```bash
-git clone https://github.com/reactbricks/nextjs-starter-reactbricks-tailwind your-project
+git clone https://github.com/reactbricks/nextjs-rsc-starter-reactbricks-tailwind your-project
 ```
 
 ## 📖 Documentation

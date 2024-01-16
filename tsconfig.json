@@ -32,12 +32,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "app/[lang]/blog/tag/[tag]/page.tsx_",
-    "app/[lang]/blog/tag/[tag]/page-content.tsx_",
-    "app/[lang]/blog/post/[[...slug]]/page.tsx_",
-    "middleware.ts_",
-    "react-bricks/bricks/react-bricks-ui/singleColumnContent/Code/_PrismCode.tsx_hljs_"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

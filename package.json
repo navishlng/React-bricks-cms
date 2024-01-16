@@ -19,7 +19,6 @@
     "prism-theme-night-owl": "^1.4.0",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
-    "react-advanced-cropper": "^0.19.3",
     "react-bricks": "4.2.0-beta.1",
     "react-dom": "^18.2.0",
     "react-image-crop": "^10.1.5",

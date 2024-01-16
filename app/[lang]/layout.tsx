@@ -18,7 +18,6 @@ import { i18n } from '@/i18n-config'
 import config from '@/react-bricks/config'
 
 import '@/css/styles.css'
-import 'react-advanced-cropper/dist/style.css'
 
 export const metadata = {
   title: 'React Bricks Starter',
@@ -85,7 +84,6 @@ export default async function Layout({
   children: React.ReactNode
   params: { lang: string }
 }) {
-  const switchThemeDuration = 10
   const { header, footer, errorNoKeys, errorHeader, errorFooter } =
     await getData(params.lang)
 
@@ -101,7 +99,7 @@ export default async function Layout({
 
   return (
     <html lang={params.lang} suppressHydrationWarning>
-      <body className={`bg-white dark:bg-[#0d1117] ${switchThemeDuration}`}>
+      <body className={`dark:bg-gray-900`}>
         <ThemeProvider
           attribute="class"
           storageKey="color-mode"

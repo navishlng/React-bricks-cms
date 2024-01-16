@@ -1,15 +1,12 @@
 'use client'
 
+import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { ReactBricks } from 'react-bricks'
 
 import NextLink from '@/react-bricks/NextLink'
 import config from '@/react-bricks/config'
-
-import '@/css/styles.css'
-import { useTheme } from 'next-themes'
-import 'react-advanced-cropper/dist/style.css'
 
 export default function ReactBricksApp({
   children,
