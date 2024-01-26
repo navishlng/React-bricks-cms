@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Repeater, types } from 'react-bricks/rsc'
 
 import {
@@ -7,10 +6,10 @@ import {
   paddingBordersSideGroup,
   sectionDefaults,
 } from '../../LayoutSideProps'
-import { avatars } from '../../shared/defaultImages'
 import blockNames from '../../blockNames'
 import Container from '../../shared/components/Container'
 import Section from '../../shared/components/Section'
+import { avatars } from '../../shared/defaultImages'
 
 export interface TestimonialProps extends LayoutProps {
   avatarImage: types.IImageSource

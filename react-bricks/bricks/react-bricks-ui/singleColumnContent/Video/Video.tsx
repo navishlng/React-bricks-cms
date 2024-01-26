@@ -1,5 +1,5 @@
-import React from 'react'
 import { types } from 'react-bricks/rsc'
+
 import blockNames from '../../blockNames'
 import {
   containerWidthSideGroup,

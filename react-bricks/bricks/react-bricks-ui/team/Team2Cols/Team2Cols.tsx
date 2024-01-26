@@ -1,6 +1,6 @@
 import classNames from 'classnames'
-import React from 'react'
 import { Repeater, types } from 'react-bricks/rsc'
+
 import blockNames from '../../blockNames'
 import {
   LayoutProps,

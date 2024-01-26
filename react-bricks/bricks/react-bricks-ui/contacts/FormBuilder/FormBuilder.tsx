@@ -21,7 +21,6 @@ export interface FormBuilderProps extends LayoutProps {
 const FormBuilder: types.Brick<FormBuilderProps> = ({
   backgroundColor,
   backgroundImage,
-  backgroundImageDark,
   borderTop,
   borderBottom,
   paddingTop,
@@ -36,7 +35,6 @@ const FormBuilder: types.Brick<FormBuilderProps> = ({
       <FormBuilderClient
         backgroundColor={backgroundColor}
         backgroundImage={backgroundImage}
-        backgroundImageDark={backgroundImageDark}
         borderTop={borderTop}
         borderBottom={borderBottom}
         paddingTop={paddingTop}

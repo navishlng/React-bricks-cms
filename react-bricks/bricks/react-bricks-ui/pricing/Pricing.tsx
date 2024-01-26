@@ -1,15 +1,15 @@
-import React from 'react'
-import { types, Repeater } from 'react-bricks/rsc'
-import Container from '../shared/components/Container'
-import Section from '../shared/components/Section'
-import blockNames from '../blockNames'
+import { Repeater, types } from 'react-bricks/rsc'
+
 import {
   LayoutProps,
   neutralBackgroundSideGroup,
   paddingBordersSideGroup,
   sectionDefaults,
 } from '../LayoutSideProps'
+import blockNames from '../blockNames'
 import { pricingColors } from '../colors'
+import Container from '../shared/components/Container'
+import Section from '../shared/components/Section'
 
 interface PricingProps extends LayoutProps {
   plans: types.RepeaterItems

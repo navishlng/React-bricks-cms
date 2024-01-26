@@ -12,6 +12,7 @@ import {
 import { ClickToEdit } from 'react-bricks/rsc/client'
 
 import ErrorNoKeys from '@/components/errorNoKeys'
+import ErrorNoPage from '@/components/errorNoPage'
 import config from '@/react-bricks/config'
 
 const getData = async (
@@ -116,6 +117,7 @@ export default async function Page({
       {page?.meta && <JsonLd page={page}></JsonLd>}
       {pageOk && !errorPage && !errorNoKeys && <PageViewer page={pageOk} />}
       {errorNoKeys && <ErrorNoKeys />}
+      {errorPage && <ErrorNoPage />}
       {pageOk && config && (
         <ClickToEdit
           pageId={pageOk?.id}

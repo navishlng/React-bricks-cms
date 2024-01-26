@@ -33,7 +33,6 @@ export interface HeroUnitProps extends LayoutProps {
 const HeroUnit2: types.Brick<HeroUnitProps> = ({
   backgroundColor,
   backgroundImage,
-  backgroundImageDark,
   borderTop,
   borderBottom,
   paddingTop,
@@ -56,7 +55,6 @@ const HeroUnit2: types.Brick<HeroUnitProps> = ({
     <Section
       backgroundColor={backgroundColor}
       backgroundImage={backgroundImage}
-      backgroundImageDark={backgroundImageDark}
       borderTop={borderTop}
       borderBottom={borderBottom}
     >

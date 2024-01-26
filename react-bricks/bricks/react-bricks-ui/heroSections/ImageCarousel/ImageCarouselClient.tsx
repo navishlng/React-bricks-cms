@@ -21,8 +21,6 @@ export interface ImageCarouselProps extends LayoutProps {
 
 const ImageCarouselClient: React.FC<ImageCarouselProps> = ({
   backgroundColor,
-  backgroundImage,
-  backgroundImageDark,
   borderTop,
   borderBottom,
   paddingTop,

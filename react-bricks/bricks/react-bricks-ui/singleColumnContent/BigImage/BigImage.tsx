@@ -1,9 +1,6 @@
-import React from 'react'
 import { Image, types } from 'react-bricks/rsc'
+
 import blockNames from '../../blockNames'
-import Container from '../../shared/components/Container'
-import Section from '../../shared/components/Section'
-import { photos } from '../../shared/defaultImages'
 import {
   containerWidthSideGroup,
   LayoutProps,
@@ -11,6 +8,9 @@ import {
   paddingBordersSideGroup,
   sectionDefaults,
 } from '../../LayoutSideProps'
+import Container from '../../shared/components/Container'
+import Section from '../../shared/components/Section'
+import { photos } from '../../shared/defaultImages'
 
 interface BigImageProps extends LayoutProps {
   image: types.IImageSource

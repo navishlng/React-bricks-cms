@@ -17,16 +17,10 @@ export interface FormBuilderClientProps extends LayoutProps {
 
 const FormBuilderClient: React.FC<FormBuilderClientProps> = ({
   backgroundColor,
-  backgroundImage,
-  backgroundImageDark,
   borderTop,
   borderBottom,
   paddingTop,
   paddingBottom,
-  buttonPosition,
-  formElements,
-  formButtons,
-  width,
   children,
 }) => {
   const { register, handleSubmit } = useContext(FormBuilderContext)

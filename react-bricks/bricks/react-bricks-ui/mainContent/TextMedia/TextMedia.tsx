@@ -1,6 +1,12 @@
 import classNames from 'classnames'
-import * as React from 'react'
 import { Image, Link, Repeater, RichText, types } from 'react-bricks/rsc'
+
+import {
+  LayoutProps,
+  backgroundSideGroup,
+  paddingBordersSideGroup,
+  sectionDefaults,
+} from '../../LayoutSideProps'
 import blockNames from '../../blockNames'
 import {
   buttonColors,
@@ -10,14 +16,8 @@ import {
 } from '../../colors'
 import Container from '../../shared/components/Container'
 import Section from '../../shared/components/Section'
-import {
-  backgroundSideGroup,
-  LayoutProps,
-  paddingBordersSideGroup,
-  sectionDefaults,
-} from '../../LayoutSideProps'
-import { photos } from '../../shared/defaultImages'
 import Video from '../../shared/components/Video'
+import { photos } from '../../shared/defaultImages'
 
 export interface TextMediaProps extends LayoutProps {
   mediaType: 'image' | 'multiple-images' | 'video-file' | 'video-streaming'

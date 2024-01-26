@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Image, Plain, Text, types } from 'react-bricks/rsc'
 
 import {
@@ -7,11 +6,11 @@ import {
   paddingBordersSideGroup,
   sectionDefaults,
 } from '../../LayoutSideProps'
-import { avatars, iconLogos } from '../../shared/defaultImages'
 import blockNames from '../../blockNames'
 import { textColors } from '../../colors'
 import Container from '../../shared/components/Container'
 import Section from '../../shared/components/Section'
+import { avatars, iconLogos } from '../../shared/defaultImages'
 
 export interface TestimonialProps extends LayoutProps {
   quote: types.TextValue

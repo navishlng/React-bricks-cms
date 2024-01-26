@@ -15,7 +15,6 @@ type RBUIColor = types.IColor & { className: string }
 export interface LayoutProps {
   backgroundColor: RBUIColor
   backgroundImage: types.IImageSource
-  backgroundImageDark: types.IImageSource
   borderTop: Border
   borderBottom: Border
   width: Size
@@ -74,19 +73,10 @@ export const neutralBackgroundColorsEditProps: types.ISideEditProp<{
 
 export const backgroundImageEditProps: types.ISideEditProp<{
   backgroundImage: types.IImageSource
-  backgroundImageDark: types.IImageSource
 }>[] = [
   {
     name: 'backgroundImage',
     label: 'Background Image',
-    type: types.SideEditPropType.Image,
-    imageOptions: {
-      aspectRatio: 2,
-    },
-  },
-  {
-    name: 'backgroundImageDark',
-    label: 'Background Image Dark',
     type: types.SideEditPropType.Image,
     imageOptions: {
       aspectRatio: 2,
@@ -411,7 +401,6 @@ export const backgroundSideGroup: types.ISideGroup<{
 export const backgroundWithImageBgSideGroup: types.ISideGroup<{
   backgroundColor: RBUIColor
   backgroundImage: types.IImageSource
-  backgroundImageDark: types.IImageSource
 }> = {
   groupName: 'Background',
   props: [backgroundColorsEditProps, ...backgroundImageEditProps],

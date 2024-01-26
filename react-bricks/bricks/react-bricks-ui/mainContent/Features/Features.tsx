@@ -1,16 +1,15 @@
-import * as React from 'react'
+import classNames from 'classnames'
 import { Repeater, types } from 'react-bricks/rsc'
 
-import classNames from 'classnames'
-import blockNames from '../../blockNames'
-import Container from '../../shared/components/Container'
-import Section from '../../shared/components/Section'
 import {
-  sectionDefaults,
   LayoutProps,
   neutralBackgroundSideGroup,
   paddingBordersSideGroup,
+  sectionDefaults,
 } from '../../LayoutSideProps'
+import blockNames from '../../blockNames'
+import Container from '../../shared/components/Container'
+import Section from '../../shared/components/Section'
 import { icons } from '../../shared/defaultImages'
 
 export type ColsNumber = '2' | '3' | '4'

@@ -1,7 +1,5 @@
-import React from 'react'
+import classNames from 'classnames'
 import { Repeater, types } from 'react-bricks/rsc'
-import Container, { Padding, Size } from '../../shared/components/Container'
-import Section, { Border } from '../../shared/components/Section'
 
 import blockNames from '../../blockNames'
 import {
@@ -11,9 +9,10 @@ import {
   paddingBordersSideGroup,
   sectionDefaults,
 } from '../../LayoutSideProps'
-import classNames from 'classnames'
-import { icons } from '../../shared/defaultImages'
+import Container from '../../shared/components/Container'
+import Section from '../../shared/components/Section'
 import TitleSubtitle from '../../shared/components/TitleSubtitle'
+import { icons } from '../../shared/defaultImages'
 
 interface CardsProps extends LayoutProps {
   colNumber: string

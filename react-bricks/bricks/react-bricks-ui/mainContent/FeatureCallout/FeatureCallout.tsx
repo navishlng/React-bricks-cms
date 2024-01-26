@@ -1,18 +1,16 @@
-import * as React from 'react'
 import classNames from 'classnames'
+import { Image, RichText, Text, types } from 'react-bricks/rsc'
 
-import { Text, RichText, Image, types } from 'react-bricks/rsc'
-
-import { textColors } from '../../colors'
-import Section from '../../shared/components/Section'
-import Container from '../../shared/components/Container'
 import blockNames from '../../blockNames'
+import { textColors } from '../../colors'
 import {
   backgroundSideGroup,
   LayoutProps,
   paddingBordersSideGroup,
   sectionDefaults,
 } from '../../LayoutSideProps'
+import Container from '../../shared/components/Container'
+import Section from '../../shared/components/Section'
 import { icons } from '../../shared/defaultImages'
 
 export interface FeatureCalloutProps extends LayoutProps {

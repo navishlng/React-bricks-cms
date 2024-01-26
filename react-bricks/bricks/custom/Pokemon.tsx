@@ -38,13 +38,20 @@ const Pokemon: types.Brick<PokemonProps> = ({
 Pokemon.schema = {
   name: 'pokemon',
   label: 'Pokemon',
-  mapExternalDataToProps: (externalData, brickProps) => ({
-    id: externalData.id,
-    name: externalData.name,
-    height: externalData.height,
-    weight: externalData.weight,
-    imageUrl: externalData.imageUrl,
-  }),
+  getData: async (page) => {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${page.slug}`
+    )
+    const data = await response.json()
+
+    return {
+      id: data.id,
+      name: data.name,
+      height: data.height,
+      weight: data.weight,
+      imageUrl: `https://img.pokemondb.net/artwork/large/${data.name}.jpg`,
+    }
+  },
 
   // Sidebar Edit controls for props
   sideEditProps: [],
