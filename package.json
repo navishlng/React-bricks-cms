@@ -2,7 +2,7 @@
   "name": "nextjs-rsc-starter-reactbricks-ui",
   "private": true,
   "license": "SEE LICENSE IN LICENSE",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "author": "Matteo Frana <f2@f2.net>",
   "scripts": {
     "dev": "next dev",
@@ -19,7 +19,7 @@
     "prism-theme-night-owl": "^1.4.0",
     "prismjs": "^1.29.0",
     "react": "^18.2.0",
-    "react-bricks": "4.2.0-beta.3",
+    "react-bricks": "4.2.0-beta.4",
     "react-dom": "^18.2.0",
     "react-image-crop": "^10.1.5",
     "react-modal": "^3.16.1",
