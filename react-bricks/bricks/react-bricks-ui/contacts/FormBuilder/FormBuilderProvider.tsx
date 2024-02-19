@@ -11,7 +11,7 @@ import { useForm } from 'react-hook-form'
 
 interface IFormBuilderProvider {
   register?: UseFormRegister<FieldValues>
-  handleSubmit?: UseFormHandleSubmit<FieldValues, undefined>
+  handleSubmit?: UseFormHandleSubmit<FieldValues>
   errors?: FieldErrorsImpl<{
     [x: string]: any
   }>
