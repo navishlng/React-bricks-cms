@@ -8,6 +8,9 @@ import Section from '../../shared/components/Section'
 import CarouselStyles from './CarouselStyles'
 import { Repeater, types } from 'react-bricks/rsc'
 
+// @ts-ignore
+const SliderComponent = !!Slider.default ? Slider.default : Slider
+
 export interface ImageCarouselProps extends LayoutProps {
   slidesToShow: string
   slidesToScroll: string
@@ -85,7 +88,7 @@ const ImageCarouselClient: React.FC<ImageCarouselProps> = ({
         }
     `}</style>
 
-        <Slider {...settings}>
+        <SliderComponent {...settings}>
           {/*@ts-ignore*/}
           {repeaterElement?.props?.children?.map((child, index) => {
             return (
@@ -94,7 +97,7 @@ const ImageCarouselClient: React.FC<ImageCarouselProps> = ({
               </div>
             )
           })}
-        </Slider>
+        </SliderComponent>
       </Container>
     </Section>
   )
