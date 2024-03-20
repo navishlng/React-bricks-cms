@@ -158,8 +158,8 @@ const NewsletterHeroClient: React.FC<
                 )}
                 placeholder="Privacy..."
                 allowedFeatures={[types.RichTextFeatures.Link]}
-                renderLink={({ children, href }) => (
-                  <Link href={href} className="underline">
+                renderLink={({ children, href, target, rel }) => (
+                  <Link href={href} target={target} rel={rel} className="underline">
                     {children}
                   </Link>
                 )}

@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { Image, RichText, Text, types } from 'react-bricks/rsc'
+import { Image, RichText, Text, types, Link } from 'react-bricks/rsc'
 
 import blockNames from '../../blockNames'
 import { textColors } from '../../colors'
@@ -81,6 +81,16 @@ const FeatureCallout: types.Brick<FeatureCalloutProps> = ({
             )}
             placeholder="Text"
             allowedFeatures={[types.RichTextFeatures.Link]}
+            renderLink={(props) => (
+              <Link
+                href={props.href}
+                target={props.target}
+                rel={props.rel}
+                className="text-sky-500 hover:text-sky-600 transition-colors"
+              >
+                {props.children}
+              </Link>
+            )}
           />
         </div>
       </Container>

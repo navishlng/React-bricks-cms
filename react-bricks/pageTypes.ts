@@ -7,9 +7,7 @@ const pageTypes: types.IPageType[] = [
     defaultLocked: false,
     defaultStatus: types.PageStatus.Published,
     getDefaultContent: () => [],
-    excludedBlockTypes: ['pokemon'],
   },
-
   {
     name: 'blog',
     pluralName: 'Blog',
@@ -27,11 +25,6 @@ const pageTypes: types.IPageType[] = [
       'blog-title',
       'newsletter-subscribe',
     ],
-    excludedBlockTypes: ['pokemon'],
-  },
-  {
-    name: 'pokemon',
-    pluralName: 'pokemon',
   },
   {
     name: 'layout',
