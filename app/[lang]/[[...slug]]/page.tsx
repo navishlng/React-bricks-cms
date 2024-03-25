@@ -74,7 +74,7 @@ export async function generateStaticParams({
 
   const allPages = await fetchPages(config.apiKey, {
     language: params.lang,
-    types: ['page', 'pokemon'],
+    type: 'page',
   })
 
   const pages = allPages
