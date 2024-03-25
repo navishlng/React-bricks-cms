@@ -29,13 +29,16 @@ const getData = async (
   }
 
   const [tags, posts] = await Promise.all([
-    fetchTags(config.apiKey),
+    fetchTags(config.apiKey, undefined, undefined, undefined, {
+      next: { revalidate: 3 },
+    }),
     fetchPages({
       type: 'blog',
       pageSize: 1000,
       sort: '-publishedAt',
       fetchExternalData: true,
       config,
+      fetchOptions: { next: { revalidate: 3 } },
     }).catch(() => {
       errorPage = true
       return null

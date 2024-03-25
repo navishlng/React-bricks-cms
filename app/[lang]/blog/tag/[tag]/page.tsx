@@ -31,16 +31,20 @@ const getData = async (
   }
 
   const [pagesByTag, tags] = await Promise.all([
-    fetchPages(config.apiKey, {
+    fetchPages({
       tag: tag.toString(),
       type: 'blog',
-      pageSize: 100,
+      pageSize: 1000,
       sort: '-publishedAt',
+      config,
+      fetchOptions: { next: { revalidate: 3 } },
     }).catch(() => {
       errorPage = true
       return null
     }),
-    fetchTags(config.apiKey),
+    fetchTags(config.apiKey, undefined, undefined, undefined, {
+      next: { revalidate: 3 },
+    }),
   ])
 
   return {
