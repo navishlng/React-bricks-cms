@@ -44,7 +44,7 @@ Pokemon.schema = {
   previewImageUrl: `/bricks-preview-images/pokemon.png`,
   getDefaultProps: () => ({}),
   getExternalData: (page, brickProps) =>
-    fetch(`https://pokeapi.co/api/v2/pokemon/${brickProps.pokemonName}`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/${brickProps?.pokemonName}`)
       .then((response) => response.json())
       .then((data) => ({
         id: data.id,
