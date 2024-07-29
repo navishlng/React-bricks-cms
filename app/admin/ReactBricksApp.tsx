@@ -2,11 +2,20 @@
 
 import { useTheme } from 'next-themes'
 import { useRouter } from 'next/navigation'
+import { Nunito_Sans } from 'next/font/google'
 import { useState } from 'react'
 import { ReactBricks } from 'react-bricks'
 
 import NextLink from '@/react-bricks/NextLink'
 import config from '@/react-bricks/config'
+
+const nunito = Nunito_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  variable: '--font-nunito',
+})
 
 export default function ReactBricksApp({
   children,
@@ -39,7 +48,7 @@ export default function ReactBricksApp({
     renderLocalLink: NextLink,
     isDarkColorMode: colorMode === 'dark',
     toggleColorMode,
-    contentClassName: `antialiased font-content ${colorMode} ${
+    contentClassName: `antialiased font-content ${nunito.className} ${colorMode} ${
       colorMode === 'dark' ? 'dark bg-gray-900' : 'light bg-white'
     }`,
   }
