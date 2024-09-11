@@ -48,7 +48,7 @@ export default function ReactBricksApp({
     renderLocalLink: NextLink,
     isDarkColorMode: colorMode === 'dark',
     toggleColorMode,
-    contentClassName: `antialiased font-content ${nunito.className} ${colorMode} ${
+    contentClassName: `antialiased ${nunito.variable} font-sans ${colorMode} ${
       colorMode === 'dark' ? 'dark bg-gray-900' : 'light bg-white'
     }`,
   }

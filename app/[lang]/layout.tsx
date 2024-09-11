@@ -108,7 +108,9 @@ export default async function Layout({
 
   return (
     <html lang={params.lang} suppressHydrationWarning>
-      <body className={`${nunito.variable} font-sans dark:bg-gray-900 antialiased`}>
+      <body
+        className={`${nunito.variable} font-sans dark:bg-gray-900 antialiased`}
+      >
         <ThemeProvider
           attribute="class"
           storageKey="color-mode"

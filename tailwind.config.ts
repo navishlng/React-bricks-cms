@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: 'var(--font-nunito)',
+        sans: ['var(--font-nunito)'],
       },
       screens: {
         sm: '600px',
