@@ -3,26 +3,17 @@
 import { useContext } from 'react'
 import { types } from 'react-bricks/rsc'
 
-import { LayoutProps } from '../../LayoutSideProps'
 import Container from '../../shared/components/Container'
-import Section from '../../shared/components/Section'
 import { FormBuilderContext } from './FormBuilderProvider'
 
-export interface FormBuilderClientProps extends LayoutProps {
+export interface FormBuilderClientProps {
   buttonPosition: string
   formElements: types.RepeaterItems
   formButtons: types.RepeaterItems
   children: any
 }
 
-const FormBuilderClient: React.FC<FormBuilderClientProps> = ({
-  backgroundColor,
-  borderTop,
-  borderBottom,
-  paddingTop,
-  paddingBottom,
-  children,
-}) => {
+const FormBuilderClient: React.FC<FormBuilderClientProps> = ({ children }) => {
   const { register, handleSubmit } = useContext(FormBuilderContext)
 
   if (!register || !handleSubmit) {
@@ -34,26 +25,12 @@ const FormBuilderClient: React.FC<FormBuilderClientProps> = ({
   }
 
   return (
-    <div>
-      <Section
-        backgroundColor={backgroundColor}
-        borderTop={borderTop}
-        borderBottom={borderBottom}
-      >
-        <Container
-          size="full"
-          paddingTop={paddingTop}
-          paddingBottom={paddingBottom}
-        >
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="grid grid-cols-2 gap-4 py-6"
-          >
-            {children}
-          </form>
-        </Container>
-      </Section>
-    </div>
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="grid grid-cols-2 gap-4 p-6"
+    >
+      {children}
+    </form>
   )
 }
 
