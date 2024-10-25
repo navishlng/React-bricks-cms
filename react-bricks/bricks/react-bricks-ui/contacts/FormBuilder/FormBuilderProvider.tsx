@@ -6,6 +6,7 @@ import type {
   FieldValues,
   UseFormHandleSubmit,
   UseFormRegister,
+  UseFormSetError,
 } from 'react-hook-form'
 import { useForm } from 'react-hook-form'
 
@@ -15,6 +16,9 @@ interface IFormBuilderProvider {
   errors?: FieldErrorsImpl<{
     [x: string]: any
   }>
+  isSubmitSuccessful?: boolean
+  isSubmitting?: boolean
+  setError?: UseFormSetError<FieldValues>
 }
 
 export const FormBuilderContext = createContext<IFormBuilderProvider>({})
@@ -23,7 +27,8 @@ export default function FormBuilderProvider({ children }: any) {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitSuccessful, isSubmitting },
+    setError,
   } = useForm()
 
   return (
@@ -32,6 +37,9 @@ export default function FormBuilderProvider({ children }: any) {
         register,
         handleSubmit,
         errors,
+        isSubmitSuccessful,
+        isSubmitting,
+        setError,
       }}
     >
       {children}

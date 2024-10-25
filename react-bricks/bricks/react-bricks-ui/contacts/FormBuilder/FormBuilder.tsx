@@ -1,18 +1,22 @@
+import { useContext } from 'react'
 import { Repeater, types } from 'react-bricks/rsc'
-
 import classNames from 'classnames'
 import blockNames from '../../blockNames'
 import { buttonColors } from '../../colors'
 import FormBuilderClient from './FormBuilderClient'
-import FormBuilderProvider from './FormBuilderProvider'
+import FormBuilderProvider, { FormBuilderContext } from './FormBuilderProvider'
 
 export interface FormBuilderProps {
+  successMessage: string
+  formspreeFormId: string
   buttonPosition: string
   formElements: types.RepeaterItems
   formButtons: types.RepeaterItems
 }
 
 const FormBuilder: types.Brick<FormBuilderProps> = ({
+  successMessage,
+  formspreeFormId,
   buttonPosition,
   formElements,
   formButtons,
@@ -21,18 +25,15 @@ const FormBuilder: types.Brick<FormBuilderProps> = ({
     <div>
       <FormBuilderProvider>
         <FormBuilderClient
-          buttonPosition={buttonPosition}
-          formElements={formElements}
-          formButtons={formButtons}
+          formspreeFormId={formspreeFormId}
+          successMessage={successMessage}
         >
-          <Repeater
-            propName="formElements"
-            items={formElements}
-            // itemProps={{ register, errors }}
-          />
+          <Repeater propName="formElements" items={formElements} />
+
           <Repeater
             propName="formButtons"
             items={formButtons}
+            // itemProps={{ disabled: isSubmitting }}
             renderWrapper={(items) => (
               <div
                 className={classNames(
@@ -78,6 +79,22 @@ FormBuilder.schema = {
   ],
 
   sideEditProps: [
+    {
+      groupName: 'Formspree',
+      defaultOpen: true,
+      props: [
+        {
+          name: 'formspreeFormId',
+          label: 'Formspree Form ID',
+          type: types.SideEditPropType.Text,
+        },
+        {
+          name: 'successMessage',
+          label: 'Success Message',
+          type: types.SideEditPropType.Textarea,
+        },
+      ],
+    },
     {
       groupName: 'Buttons',
       defaultOpen: true,

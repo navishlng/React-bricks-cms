@@ -1,4 +1,4 @@
-import { Repeater, types } from 'react-bricks/frontend'
+import { Repeater, types } from 'react-bricks/rsc'
 
 import {
   LayoutProps,
