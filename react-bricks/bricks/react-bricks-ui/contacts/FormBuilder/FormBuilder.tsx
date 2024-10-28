@@ -1,10 +1,9 @@
-import { useContext } from 'react'
 import { Repeater, types } from 'react-bricks/rsc'
 import classNames from 'classnames'
 import blockNames from '../../blockNames'
 import { buttonColors } from '../../colors'
 import FormBuilderClient from './FormBuilderClient'
-import FormBuilderProvider, { FormBuilderContext } from './FormBuilderProvider'
+import FormBuilderProvider from './FormBuilderProvider'
 
 export interface FormBuilderProps {
   successMessage: string

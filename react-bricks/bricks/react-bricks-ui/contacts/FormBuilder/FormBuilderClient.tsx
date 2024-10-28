@@ -45,6 +45,8 @@ const FormBuilderClient: React.FC<FormBuilderClientProps> = ({
     },
   })
 
+  // const onSubmit = () => console.log('SUBMITTED - ', formspreeFormId)
+
   return (
     <>
       {isSubmitSuccessful ? (

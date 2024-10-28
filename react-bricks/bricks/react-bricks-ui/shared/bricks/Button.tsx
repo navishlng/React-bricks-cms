@@ -1,4 +1,3 @@
-import * as React from 'react'
 import classNames from 'classnames'
 import { Text, Link, types, isAdmin } from 'react-bricks/rsc'
 import blockNames from '../../blockNames'
@@ -36,7 +35,7 @@ const Button: types.Brick<ButtonProps> = ({
   simpleAnchorLink = false,
   text,
   disabled = false,
-}) => {
+}) => {  
   const target = isTargetBlank
     ? { target: '_blank', rel: 'noopener noreferrer' }
     : {}
@@ -71,7 +70,7 @@ const Button: types.Brick<ButtonProps> = ({
     )
   }
 
-  if (!isAdmin()) {
+  if (!isAdmin() && buttonType !== 'submit') {
     return (
       <button
         type={isAdmin() ? 'button' : buttonType}
@@ -114,6 +113,7 @@ const Button: types.Brick<ButtonProps> = ({
       className={className}
       simpleAnchorLink={simpleAnchorLink}
       text={text}
+      disabled={disabled}
     ></ButtonClient>
   )
 }
