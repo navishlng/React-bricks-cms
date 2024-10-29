@@ -1,4 +1,3 @@
-import * as React from 'react'
 import classNames from 'classnames'
 import { Text, Link, types, isAdmin } from 'react-bricks/rsc'
 import blockNames from '../../blockNames'
@@ -21,6 +20,7 @@ export interface ButtonProps {
   padding: 'normal' | 'small'
   className?: string
   simpleAnchorLink: boolean
+  disabled?: boolean
 }
 
 const Button: types.Brick<ButtonProps> = ({
@@ -34,7 +34,8 @@ const Button: types.Brick<ButtonProps> = ({
   className,
   simpleAnchorLink = false,
   text,
-}) => {
+  disabled = false,
+}) => {  
   const target = isTargetBlank
     ? { target: '_blank', rel: 'noopener noreferrer' }
     : {}
@@ -69,14 +70,15 @@ const Button: types.Brick<ButtonProps> = ({
     )
   }
 
-  if (!isAdmin()) {
+  if (!isAdmin() && buttonType !== 'submit') {
     return (
       <button
         type={isAdmin() ? 'button' : buttonType}
         // type={isAdmin && !previewMode ? 'button' : buttonType}
+        disabled={disabled}
         //disabled={isAdmin && !previewMode}
         className={classNames(
-          'inline-block whitespace-nowrap text-center rounded-full font-bold leading-none hover:shadow-lg transition-all ease-out duration-150 hover:-translate-y-0.5',
+          'inline-block whitespace-nowrap text-center rounded-full font-bold leading-none hover:shadow-lg transition-all ease-out duration-150 hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed',
           padding === 'small'
             ? 'py-2 px-4 text-sm min-w-[75px]'
             : 'py-3 px-5 min-w-[120px]',
@@ -111,6 +113,7 @@ const Button: types.Brick<ButtonProps> = ({
       className={className}
       simpleAnchorLink={simpleAnchorLink}
       text={text}
+      disabled={disabled}
     ></ButtonClient>
   )
 }

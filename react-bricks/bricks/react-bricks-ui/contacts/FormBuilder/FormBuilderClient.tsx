@@ -1,59 +1,95 @@
 'use client'
 
 import { useContext } from 'react'
-import { types } from 'react-bricks/rsc'
+import { useSubmit } from '@formspree/react'
 
-import { LayoutProps } from '../../LayoutSideProps'
-import Container from '../../shared/components/Container'
-import Section from '../../shared/components/Section'
 import { FormBuilderContext } from './FormBuilderProvider'
 
-export interface FormBuilderClientProps extends LayoutProps {
-  buttonPosition: string
-  formElements: types.RepeaterItems
-  formButtons: types.RepeaterItems
+export interface FormBuilderClientProps {
+  formspreeFormId: string
+  successMessage: string
   children: any
 }
 
 const FormBuilderClient: React.FC<FormBuilderClientProps> = ({
-  backgroundColor,
-  borderTop,
-  borderBottom,
-  paddingTop,
-  paddingBottom,
+  formspreeFormId,
+  successMessage,
   children,
 }) => {
-  const { register, handleSubmit } = useContext(FormBuilderContext)
+  const { register, setError, handleSubmit, errors, isSubmitSuccessful } =
+    useContext(FormBuilderContext)
 
   if (!register || !handleSubmit) {
     return null
   }
 
-  const onSubmit = () => {
-    console.log('submit')
-  }
+  const onSubmit = useSubmit(formspreeFormId, {
+    onError(errs) {
+      const formErrs = errs.getFormErrors()
+
+      for (const { code, message } of formErrs) {
+        setError &&
+          setError(`root.${code}`, {
+            type: code,
+            message,
+          })
+      }
+
+      const fieldErrs = errs.getAllFieldErrors()
+      for (const [field, errs] of fieldErrs) {
+        setError &&
+          setError(field, {
+            message: errs.map((e) => e.message).join(', '),
+          })
+      }
+    },
+  })
+
+  // const onSubmit = () => console.log('SUBMITTED - ', formspreeFormId)
 
   return (
-    <div>
-      <Section
-        backgroundColor={backgroundColor}
-        borderTop={borderTop}
-        borderBottom={borderBottom}
-      >
-        <Container
-          size="full"
-          paddingTop={paddingTop}
-          paddingBottom={paddingBottom}
+    <>
+      {isSubmitSuccessful ? (
+        <h2 className="mt-6 text-xl leading-7 font-bold text-lime-600">
+          {successMessage}
+        </h2>
+      ) : (
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="grid grid-cols-2 gap-4 p-6"
         >
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="grid grid-cols-2 gap-4 py-6"
-          >
-            {children}
-          </form>
-        </Container>
-      </Section>
-    </div>
+          {children}
+
+          {errors && errors.root && (
+            <div className="block">
+              <ul className="error">
+                {Object.values(errors.root).map((err) => {
+                  if (typeof err !== 'object') {
+                    return (
+                      <li
+                        key={err}
+                        className="block mt-1 text-sm text-red-500 font-bold"
+                      >
+                        {err}
+                      </li>
+                    )
+                  }
+                  const { type, message } = err
+                  return (
+                    <li
+                      key={type}
+                      className="block mt-1 text-sm text-red-500 font-bold"
+                    >
+                      {message}
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          )}
+        </form>
+      )}
+    </>
   )
 }
 

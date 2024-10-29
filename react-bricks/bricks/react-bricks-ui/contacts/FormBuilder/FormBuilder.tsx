@@ -1,70 +1,52 @@
 import { Repeater, types } from 'react-bricks/rsc'
-
 import classNames from 'classnames'
 import blockNames from '../../blockNames'
 import { buttonColors } from '../../colors'
-import {
-  backgroundSideGroup,
-  LayoutProps,
-  paddingBordersSideGroup,
-  sectionDefaults,
-} from '../../LayoutSideProps'
 import FormBuilderClient from './FormBuilderClient'
 import FormBuilderProvider from './FormBuilderProvider'
 
-export interface FormBuilderProps extends LayoutProps {
+export interface FormBuilderProps {
+  successMessage: string
+  formspreeFormId: string
   buttonPosition: string
   formElements: types.RepeaterItems
   formButtons: types.RepeaterItems
 }
 
 const FormBuilder: types.Brick<FormBuilderProps> = ({
-  backgroundColor,
-  backgroundImage,
-  borderTop,
-  borderBottom,
-  paddingTop,
-  paddingBottom,
+  successMessage,
+  formspreeFormId,
   buttonPosition,
   formElements,
   formButtons,
-  width,
 }) => {
   return (
-    <FormBuilderProvider>
-      <FormBuilderClient
-        backgroundColor={backgroundColor}
-        backgroundImage={backgroundImage}
-        borderTop={borderTop}
-        borderBottom={borderBottom}
-        paddingTop={paddingTop}
-        paddingBottom={paddingBottom}
-        buttonPosition={buttonPosition}
-        formElements={formElements}
-        formButtons={formButtons}
-        width={width}
-      >
-        <Repeater
-          propName="formElements"
-          items={formElements}
-          // itemProps={{ register, errors }}
-        />
-        <Repeater
-          propName="formButtons"
-          items={formButtons}
-          renderWrapper={(items) => (
-            <div
-              className={classNames(
-                'w-full flex space-x-6 col-span-2',
-                buttonPosition
-              )}
-            >
-              {items}
-            </div>
-          )}
-        />
-      </FormBuilderClient>
-    </FormBuilderProvider>
+    <div>
+      <FormBuilderProvider>
+        <FormBuilderClient
+          formspreeFormId={formspreeFormId}
+          successMessage={successMessage}
+        >
+          <Repeater propName="formElements" items={formElements} />
+
+          <Repeater
+            propName="formButtons"
+            items={formButtons}
+            // itemProps={{ disabled: isSubmitting }}
+            renderWrapper={(items) => (
+              <div
+                className={classNames(
+                  'w-full flex space-x-6 col-span-2',
+                  buttonPosition
+                )}
+              >
+                {items}
+              </div>
+            )}
+          />
+        </FormBuilderClient>
+      </FormBuilderProvider>
+    </div>
   )
 }
 
@@ -72,6 +54,7 @@ FormBuilder.schema = {
   name: blockNames.FormBuilder,
   label: 'Form',
   category: 'contact',
+  hideFromAddMenu: true,
   previewImageUrl: `/bricks-preview-images/${blockNames.FormBuilder}.png`,
   repeaterItems: [
     {
@@ -96,6 +79,24 @@ FormBuilder.schema = {
 
   sideEditProps: [
     {
+      groupName: 'Formspree',
+      defaultOpen: true,
+      props: [
+        {
+          name: 'formspreeFormId',
+          label: 'Formspree Form ID',
+          type: types.SideEditPropType.Text,
+          helperText:
+            'Copy your Fromspree Form ID from the Formspree dashboard.',
+        },
+        {
+          name: 'successMessage',
+          label: 'Success Message',
+          type: types.SideEditPropType.Textarea,
+        },
+      ],
+    },
+    {
       groupName: 'Buttons',
       defaultOpen: true,
       props: [
@@ -114,12 +115,9 @@ FormBuilder.schema = {
         },
       ],
     },
-    backgroundSideGroup,
-    paddingBordersSideGroup,
   ],
 
   getDefaultProps: () => ({
-    ...sectionDefaults,
     buttonPosition: 'justify-center',
     formElements: [
       {
