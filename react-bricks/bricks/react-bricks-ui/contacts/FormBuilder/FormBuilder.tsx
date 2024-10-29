@@ -86,6 +86,8 @@ FormBuilder.schema = {
           name: 'formspreeFormId',
           label: 'Formspree Form ID',
           type: types.SideEditPropType.Text,
+          helperText:
+            'Copy your Fromspree Form ID from the Formspree dashboard.',
         },
         {
           name: 'successMessage',
