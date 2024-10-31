@@ -149,6 +149,8 @@ const FormInputClient: React.FC<FormInputProps> = ({
         <div className="block mt-1 text-xs text-red-500 font-bold">
           {errors[fieldName]?.type === 'required' && requiredError}
           {errors[fieldName]?.type === 'pattern' && patternError}
+          {errors[fieldName]?.message &&
+            `This field ${errors[fieldName]?.message}`}
         </div>
       )}
     </div>

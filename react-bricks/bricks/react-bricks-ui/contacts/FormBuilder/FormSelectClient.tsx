@@ -110,6 +110,8 @@ const FormSelectClient: React.FC<FormSelectProps> = ({
       {errors[fieldName] && (
         <span className="block mt-2 text-xs text-red-500 font-bold">
           {errors[fieldName]?.type === 'required' && requiredError}
+          {errors[fieldName]?.message &&
+            `This field ${errors[fieldName]?.message}`}
         </span>
       )}
     </div>
