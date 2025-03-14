@@ -52,23 +52,21 @@ const NewsletterHeroClient: React.FC<
         )}
       >
         <div className="flex-1 lg:pr-14 mb-4 lg:mb-0">
-          <div
-            className={classNames('mb-4', gradients[textGradient].className)}
-            style={titleStyle}
-          >
+          <div className="mb-4" style={titleStyle}>
             <Text
               propName="title"
               value={title}
               renderBlock={(props) => (
-                <p
+                <h2
                   className={classNames(
                     'font-bold text-[32px] leading-tight md:text-4xl xl:text-5xl bg-clip-text bg-linear-to-r',
-                    textColors.GRAY_900
+                    textColors.GRAY_900,
+                    gradients[textGradient].className
                   )}
                   {...props.attributes}
                 >
                   {props.children}
-                </p>
+                </h2>
               )}
               placeholder="Call to action text"
             />
@@ -159,7 +157,12 @@ const NewsletterHeroClient: React.FC<
                 placeholder="Privacy..."
                 allowedFeatures={[types.RichTextFeatures.Link]}
                 renderLink={({ children, href, target, rel }) => (
-                  <Link href={href} target={target} rel={rel} className="underline">
+                  <Link
+                    href={href}
+                    target={target}
+                    rel={rel}
+                    className="underline"
+                  >
                     {children}
                   </Link>
                 )}
