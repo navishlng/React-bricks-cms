@@ -27,6 +27,7 @@ const Pokemon: types.Brick<PokemonProps> = ({
           Test external data
         </p>
       </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={imageUrl} className="mx-auto w-36 mb-4" />
 
       <h1 className="text-5xl font-extrabold text-center mb-6">{name}</h1>

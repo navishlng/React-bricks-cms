@@ -44,6 +44,7 @@ const PostListItem: React.FC<PostListItemProps> = ({
         </div>
 
         <div className="flex items-center space-x-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={author.avatarUrl}
             alt={author.firstName + ' ' + author.lastName}

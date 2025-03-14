@@ -60,7 +60,10 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function Page({ params }: { params: { lang: string } }) {
+export default async function Page(props: {
+  params: Promise<{ lang: string }>
+}) {
+  const params = await props.params
   const { tags, posts, errorNoKeys } = await getData(params.lang)
 
   return (

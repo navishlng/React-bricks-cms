@@ -80,7 +80,7 @@ export async function generateStaticParams({
   const pages = allPages
     .map((page) =>
       page.translations.map((translation) => ({
-        slug: translation.slug.split('/'),
+        slug: translation.slug === '/' ? [''] : translation.slug.split('/'),
       }))
     )
     .flat()
@@ -88,11 +88,10 @@ export async function generateStaticParams({
   return pages
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string; slug?: string[] }
+export async function generateMetadata(props: {
+  params: Promise<{ lang: string; slug?: string[] }>
 }): Promise<Metadata> {
+  const params = await props.params
   const { page } = await getData(params.slug?.join('/'), params.lang)
   if (!page?.meta) {
     return {}
@@ -101,11 +100,10 @@ export async function generateMetadata({
   return getMetadata(page)
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { lang: string; slug?: string[] }
+export default async function Page(props: {
+  params: Promise<{ lang: string; slug?: string[] }>
 }) {
+  const params = await props.params
   const { page, errorNoKeys, errorPage } = await getData(
     params.slug?.join('/'),
     params.lang
