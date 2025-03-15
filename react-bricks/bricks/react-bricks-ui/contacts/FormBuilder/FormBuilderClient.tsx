@@ -1,7 +1,7 @@
 'use client'
 
 import { useContext } from 'react'
-import { useSubmit } from '@formspree/react'
+// import { useSubmit } from '@formspree/react'
 
 import { FormBuilderContext } from './FormBuilderProvider'
 
@@ -19,33 +19,33 @@ const FormBuilderClient: React.FC<FormBuilderClientProps> = ({
   const { register, setError, handleSubmit, errors, isSubmitSuccessful } =
     useContext(FormBuilderContext)
 
+  // const onSubmit = useSubmit(formspreeFormId, {
+  //   onError(errs) {
+  //     const formErrs = errs.getFormErrors()
+
+  //     for (const { code, message } of formErrs) {
+  //       setError &&
+  //         setError(`root.${code}`, {
+  //           type: code,
+  //           message,
+  //         })
+  //     }
+
+  //     const fieldErrs = errs.getAllFieldErrors()
+  //     for (const [field, errs] of fieldErrs) {
+  //       setError &&
+  //         setError(field, {
+  //           message: errs.map((e) => e.message).join(', '),
+  //         })
+  //     }
+  //   },
+  // })
+
+  const onSubmit = () => console.log('SUBMITTED - ', formspreeFormId)
+
   if (!register || !handleSubmit) {
     return null
   }
-
-  const onSubmit = useSubmit(formspreeFormId, {
-    onError(errs) {
-      const formErrs = errs.getFormErrors()
-
-      for (const { code, message } of formErrs) {
-        setError &&
-          setError(`root.${code}`, {
-            type: code,
-            message,
-          })
-      }
-
-      const fieldErrs = errs.getAllFieldErrors()
-      for (const [field, errs] of fieldErrs) {
-        setError &&
-          setError(field, {
-            message: errs.map((e) => e.message).join(', '),
-          })
-      }
-    },
-  })
-
-  // const onSubmit = () => console.log('SUBMITTED - ', formspreeFormId)
 
   return (
     <>

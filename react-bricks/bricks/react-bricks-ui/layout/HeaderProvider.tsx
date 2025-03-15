@@ -8,7 +8,7 @@ interface IHeaderProvider {
   setMobileMenuOpen: any
   mounted: boolean
   setMounted: (value: boolean) => void
-  mobileRef: RefObject<HTMLDivElement> | null
+  mobileRef: RefObject<HTMLDivElement | null> | null
 }
 
 export const HeaderContext = createContext<IHeaderProvider>({
@@ -21,7 +21,7 @@ export const HeaderContext = createContext<IHeaderProvider>({
 
 export default function HeaderProvider({ children }: any) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  
+
   // const { isDarkColorMode, toggleColorMode } = useReactBricksContext()
 
   const [mounted, setMounted] = useState(false)

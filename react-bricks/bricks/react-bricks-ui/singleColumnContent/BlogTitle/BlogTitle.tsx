@@ -69,6 +69,7 @@ const BlogTitle: types.Brick<BlogTitleProps> = ({
 
         <div className="flex items-center space-x-2">
           {pageValues?.author.avatarUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={pageValues?.author.avatarUrl}
               alt="Author"

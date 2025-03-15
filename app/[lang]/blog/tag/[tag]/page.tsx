@@ -71,22 +71,20 @@ export async function generateStaticParams({
   return tags
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { lang: string; tag: string }
+export async function generateMetadata(props: {
+  params: Promise<{ lang: string; tag: string }>
 }): Promise<Metadata> {
+  const params = await props.params
   return {
     title: params.tag,
     description: params.tag,
   }
 }
 
-export default async function Page({
-  params,
-}: {
-  params: { lang: string; tag: string }
+export default async function Page(props: {
+  params: Promise<{ lang: string; tag: string }>
 }) {
+  const params = await props.params
   const { pagesByTag, tags, errorNoKeys } = await getData(
     params.tag,
     params.lang

@@ -69,13 +69,14 @@ const getData = async (
   }
 }
 
-export default async function Layout({
-  children,
-  params,
-}: {
+export default async function Layout(props: {
   children: React.ReactNode
-  params: { lang: string }
+  params: Promise<{ lang: string }>
 }) {
+  const params = await props.params
+
+  const { children } = props
+
   const { header, footer, errorNoKeys, errorHeader, errorFooter } =
     await getData(params.lang)
 
@@ -104,19 +105,13 @@ export default async function Layout({
                 {!errorNoKeys && (
                   <>
                     {headerOk && !errorHeader ? (
-                      <PageViewer
-                        page={headerOk}
-                        main={false}
-                      />
+                      <PageViewer page={headerOk} main={false} />
                     ) : (
                       <ErrorNoHeader />
                     )}
                     {children}
                     {footerOk && !errorFooter ? (
-                      <PageViewer
-                        page={footerOk}
-                        main={false}
-                      />
+                      <PageViewer page={footerOk} main={false} />
                     ) : (
                       <ErrorNoFooter />
                     )}
