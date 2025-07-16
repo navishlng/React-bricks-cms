@@ -111,6 +111,7 @@ const tailwindColors = {
 // TEXT COLORS
 //====================
 export const textColors = {
+  YELLOW_900: 'text-yellow-500 dark:text-yellow-400',
   GRAY_900: 'text-gray-900 dark:text-white',
   GRAY_800: 'text-gray-800 dark:text-white',
   GRAY_700: 'text-gray-700 dark:text-white',

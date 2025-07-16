@@ -120,66 +120,90 @@ Footer.schema = {
     ],
     columns: [
       {
-        title: 'Company',
+        title: 'CUSTOMER SERVICE',
         links: [
           {
-            linkText: 'About us',
+            linkText: 'FAQ',
             linkPath: '/',
           },
           {
-            linkText: 'Why React Bricks?',
+            linkText: 'Find a boutique',
             linkPath: '/',
           },
           {
-            linkText: 'Terms of service',
+            linkText: 'Our services',
             linkPath: '/',
           },
           {
-            linkText: 'Privacy',
+            linkText: 'Check your order',
+            linkPath: '/',
+          },
+          {
+            linkText: 'My account',
+            linkPath: '/',
+          },
+          {
+            linkText: 'Register your Breitling',
             linkPath: '/',
           },
         ],
       },
       {
-        title: 'Features',
+        title: 'WATCHES',
         links: [
           {
-            linkText: 'Visual editing',
+            linkText: "Women's watches",
             linkPath: '/',
           },
           {
-            linkText: 'React components',
+            linkText: "Men's watches",
             linkPath: '/',
           },
           {
-            linkText: 'Enterprise-ready',
+            linkText: 'Gold',
             linkPath: '/',
           },
           {
-            linkText: 'Roadmap',
+            linkText: 'Limited editions',
+            linkPath: '/',
+          },
+          {
+            linkText: 'Novelties',
+            linkPath: '/',
+          },
+          {
+            linkText: 'All collections',
             linkPath: '/',
           },
         ],
       },
       {
-        title: 'Use cases',
+        title: 'ABOUT',
         links: [
           {
-            linkText: 'Content editors',
+            linkText: 'Breitling Books',
             linkPath: '/',
           },
           {
-            linkText: 'Developers',
+            linkText: 'Partnerships',
             linkPath: '/',
           },
           {
-            linkText: 'Enterprises',
+            linkText: 'Sustainability',
+            linkPath: '/',
+          },
+          {
+            linkText: 'Download catalog',
+            linkPath: '/',
+          },
+          {
+            linkText: 'Career',
             linkPath: '/',
           },
         ],
       },
       {
-        title: 'Learn',
+        title: 'SOCIAL NETWORKS',
         links: [
           {
             linkText: 'Tutorial',

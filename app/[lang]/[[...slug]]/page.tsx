@@ -23,12 +23,11 @@ const getData = async (
   errorNoKeys: boolean
   errorPage: boolean
 }> => {
-  let errorNoKeys: boolean = false
-  let errorPage: boolean = false
+  let errorNoKeys = false
+  let errorPage = false
 
   if (!config.apiKey) {
     errorNoKeys = true
-
     return {
       page: null,
       errorNoKeys,
@@ -37,7 +36,6 @@ const getData = async (
   }
 
   let cleanSlug = ''
-
   if (!slug) {
     cleanSlug = '/'
   } else if (typeof slug === 'string') {
@@ -96,7 +94,6 @@ export async function generateMetadata(props: {
   if (!page?.meta) {
     return {}
   }
-
   return getMetadata(page)
 }
 
@@ -109,16 +106,18 @@ export default async function Page(props: {
     params.lang
   )
 
-  // Clean the received content
-  // Removes unknown or not allowed bricks
   const bricks = getBricks()
   const pageOk = page ? cleanPage(page, config.pageTypes || [], bricks) : null
 
   return (
     <>
-      {page?.meta && <JsonLd page={page}></JsonLd>}
+      {page?.meta && <JsonLd page={page} />}
       {pageOk && !errorPage && !errorNoKeys && (
-        <PageViewer page={pageOk} main />
+        <PageViewer
+          page={pageOk}
+          main
+          // No custom props needed - each component handles its own API calls
+        />
       )}
       {errorNoKeys && <ErrorNoKeys />}
       {errorPage && <ErrorNoPage />}
