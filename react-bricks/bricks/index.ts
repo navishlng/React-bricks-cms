@@ -10,6 +10,7 @@ import reactBricksUITheme from './react-bricks-ui'
 import FlexCard from './custom/FlexCard'
 import HeroCatalog from './custom/HeroCatalog'
 import BreitlingStrap from './custom/BreitlingStrap'
+import GenderCard from './custom/GenderCard'
 
 
 
@@ -29,6 +30,7 @@ const bricks: types.Theme[] = [
           // GenderCard,
           HeroCatalog,
           BreitlingStrap,
+          GenderCard,
         ],
       },
     ],

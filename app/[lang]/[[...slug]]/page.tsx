@@ -44,6 +44,7 @@ const getData = async (
     cleanSlug = slug.join('/')
   }
 
+  // Fetch page data
   const page = await fetchPage({
     slug: cleanSlug,
     language: locale,
@@ -116,7 +117,6 @@ export default async function Page(props: {
         <PageViewer
           page={pageOk}
           main
-          // No custom props needed - each component handles its own API calls
         />
       )}
       {errorNoKeys && <ErrorNoKeys />}

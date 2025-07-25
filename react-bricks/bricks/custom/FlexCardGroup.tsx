@@ -1,16 +1,17 @@
 // components/FlexCardGroup.tsx
 import dynamic from 'next/dynamic'
+import React from 'react'
 import { types } from 'react-bricks/rsc'
 
 const FlexCard = dynamic(() => import('./FlexCard'))
 
 const FlexCardGroup: types.Brick = () => {
   return (
-    <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 p-8">
+    <div className="flex flex-row md:flex-row justify-center items-stretch gap-8 p-8">
       {/* Card 1 */}
       <FlexCard
         padding="medium"
-        image={{ src: '/images/superocean.jpg', alt: 'Superocean' }}
+        image={{ src: '/bricks-preview-images/superocean.jpg', alt: 'Superocean' }}
         highlightedTitle="SUPEROCEAN"
         title={[
           {
@@ -42,7 +43,7 @@ const FlexCardGroup: types.Brick = () => {
       {/* Card 2 */}
       <FlexCard
         padding="medium"
-        image={{ src: '/images/kelly-slate.jpg', alt: 'Kelly Slater' }}
+        image={{ src: '/bricks-preview-images/tropical_dial.jpg', alt: 'Tropical Dial' }}
         highlightedTitle="TROPICAL DIAL"
         title={[
           {
@@ -75,7 +76,7 @@ const FlexCardGroup: types.Brick = () => {
       {/* Card 3 */}
       <FlexCard
         padding="medium"
-        image={{ src: '/images/chronomat.jpg', alt: 'Chronomat' }}
+        image={{ src: '/bricks-preview-images/austin_butler.jpg', alt: 'Austin Butler' }}
         highlightedTitle="AUSTIN BUTLER"
         title={[
           {
@@ -89,7 +90,17 @@ const FlexCardGroup: types.Brick = () => {
             styles: { fontWeight: 'bold' },
           },
         ]}
-        description={[]}
+        description={[
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'text',
+                text: '',
+              },
+            ],
+          },
+        ]}
         buttonText={[{ type: 'text', text: 'DISCOVER' }]}
         buttonLink="#"
       />
@@ -103,6 +114,7 @@ FlexCardGroup.schema = {
   category: 'Layout',
   previewImageUrl: '/bricks-preview-images/card-group.png',
   getDefaultProps: () => ({}),
+  sideEditProps: [],
 }
 
 export default FlexCardGroup

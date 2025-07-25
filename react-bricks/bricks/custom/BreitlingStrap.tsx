@@ -1,13 +1,7 @@
-'use client'
-
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { types, Text, RichText } from 'react-bricks/rsc'
-import {
-  PADDING_CLASSES,
-  DEFAULT_API_URL,
-  FALLBACK_IMAGE_SRC,
-  FALLBACK_IMAGE_ALT,
-} from '../../../utils/constants'
+import { PADDING_CLASSES, DEFAULT_API_URL } from '../../../utils/constants'
+import DynamicImage from './DynamicImage'
 
 interface BreitlingStrapProps {
   padding?: 'big' | 'medium' | 'small'
@@ -15,9 +9,8 @@ interface BreitlingStrapProps {
   description?: types.TextValue
   buttonText?: types.TextValue
   buttonLink?: string
-  customImageSrc?: string
-  customImageAlt?: string
   apiUrl?: string
+  externalImageSrc?: string
 }
 
 const BreitlingStrap: types.Brick<BreitlingStrapProps> = ({
@@ -26,72 +19,22 @@ const BreitlingStrap: types.Brick<BreitlingStrapProps> = ({
   description,
   buttonText,
   buttonLink = '#',
-  customImageSrc,
-  customImageAlt,
-  apiUrl = DEFAULT_API_URL,
+  externalImageSrc,
+  apiUrl,
 }) => {
 
-  console.log('✅ BreitlingStrap component rendered on page')
-  
-  const [imageSrc, setImageSrc] = useState<string>(customImageSrc || FALLBACK_IMAGE_SRC)
-  const [imageAlt, setImageAlt] = useState<string>(customImageAlt || FALLBACK_IMAGE_ALT)
-  const [loading, setLoading] = useState<boolean>(!customImageSrc)
-
-  useEffect(() => {
-    if (customImageSrc) {
-      setImageSrc(customImageSrc)
-      setImageAlt(customImageAlt || FALLBACK_IMAGE_ALT)
-      setLoading(false)
-      return
-    }
-
-    const fetchImage = async () => {
-      setLoading(true)
-      try {
-        const res = await fetch(apiUrl || DEFAULT_API_URL)
-        const data = await res.json()
-
-        const imageArray = data?.payload?.missingAlts
-        if (Array.isArray(imageArray) && imageArray.length > 0) {
-          const index = imageArray.length > 1 ? 1 : 0
-          const image = imageArray[index]
-          setImageSrc(image?.src || FALLBACK_IMAGE_SRC)
-          setImageAlt(image?.alt || FALLBACK_IMAGE_ALT)
-        } else {
-          setImageSrc(FALLBACK_IMAGE_SRC)
-          setImageAlt(FALLBACK_IMAGE_ALT)
-        }
-      } catch (err) {
-        console.error('Error loading image:', err)
-        setImageSrc(FALLBACK_IMAGE_SRC)
-        setImageAlt(FALLBACK_IMAGE_ALT)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchImage()
-  }, [customImageSrc, customImageAlt, apiUrl])
+  // console.log('hello');
+  // console.log(externalImageSrc);
 
   return (
     <div className={`flex w-[75%] mx-auto justify-center items-center ${PADDING_CLASSES[padding]}`}>
-      {/* Image Block */}
+      {/* ✅ Image block is now handled by a client component */}
       <div className="flex-1 flex justify-center items-center">
-        {loading ? (
-          <div className="w-full max-w-[600px] aspect-video bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
-            <p className="text-gray-500 dark:text-gray-300">Loading image...</p>
-          </div>
-        ) : (
-          <img
-            src={imageSrc}
-            alt={imageAlt}
-            className="w-full max-w-[600px] aspect-video object-cover"
-            onError={() => {
-              setImageSrc(FALLBACK_IMAGE_SRC)
-              setImageAlt(FALLBACK_IMAGE_ALT)
-            }}
-          />
-        )}
+        <DynamicImage
+          fallbackSrc="/bricks-preview-images/strap_horizontal.jpeg"
+          apiUrl={apiUrl}
+          externalImageSrc={externalImageSrc}
+        />
       </div>
 
       {/* Text Block */}
@@ -150,8 +93,6 @@ BreitlingStrap.schema = {
     ],
     buttonText: [{ type: 'paragraph', children: [{ text: 'DISCOVER STRAPS' }] }],
     buttonLink: '#',
-    customImageSrc: '',
-    customImageAlt: '',
     apiUrl: DEFAULT_API_URL,
   }),
   sideEditProps: [
@@ -171,16 +112,6 @@ BreitlingStrap.schema = {
     {
       name: 'buttonLink',
       label: 'Button Link',
-      type: types.SideEditPropType.Text,
-    },
-    {
-      name: 'customImageSrc',
-      label: 'Custom Image URL (Optional)',
-      type: types.SideEditPropType.Text,
-    },
-    {
-      name: 'customImageAlt',
-      label: 'Custom Image Alt Text (Optional)',
       type: types.SideEditPropType.Text,
     },
     {
