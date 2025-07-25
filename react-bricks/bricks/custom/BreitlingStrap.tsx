@@ -11,6 +11,7 @@ interface BreitlingStrapProps {
   buttonLink?: string
   apiUrl?: string
   externalImageSrc?: string
+  imageIndex?: number
 }
 
 const BreitlingStrap: types.Brick<BreitlingStrapProps> = ({
@@ -21,29 +22,27 @@ const BreitlingStrap: types.Brick<BreitlingStrapProps> = ({
   buttonLink = '#',
   externalImageSrc,
   apiUrl,
+  imageIndex,
 }) => {
-
-  // console.log('hello');
-  // console.log(externalImageSrc);
-
   return (
-    <div className={`flex w-[75%] mx-auto justify-center items-center ${PADDING_CLASSES[padding]}`}>
+    <div className={`flex flex-col lg:flex-row w-full max-w-6xl mx-auto justify-center items-center ${PADDING_CLASSES[padding]}`}>
       {/* ✅ Image block is now handled by a client component */}
-      <div className="flex-1 flex justify-center items-center">
+      <div className="w-full lg:flex-1 flex justify-center items-center mb-6 lg:mb-0">
         <DynamicImage
           fallbackSrc="/bricks-preview-images/strap_horizontal.jpeg"
           apiUrl={apiUrl}
           externalImageSrc={externalImageSrc}
+          imageIndex={imageIndex}
         />
       </div>
 
       {/* Text Block */}
-      <div className="flex-1 flex flex-col justify-center items-center p-6">
+      <div className="w-full lg:flex-1 flex flex-col justify-center items-center p-4 lg:p-6">
         <Text
           propName="title"
           value={title || []}
           renderBlock={({ children }) => (
-            <h2 className="text-3xl font-bold text-black dark:text-white uppercase">
+            <h2 className="text-2xl md:text-3xl font-bold text-black dark:text-white uppercase text-center">
               {children}
             </h2>
           )}
@@ -54,7 +53,9 @@ const BreitlingStrap: types.Brick<BreitlingStrapProps> = ({
           propName="description"
           value={description || []}
           renderBlock={({ children }) => (
-            <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">{children}</p>
+            <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mt-2 text-center max-w-md">
+              {children}
+            </p>
           )}
           placeholder="Enter description..."
           allowedFeatures={[types.RichTextFeatures.Bold]}
@@ -62,7 +63,7 @@ const BreitlingStrap: types.Brick<BreitlingStrapProps> = ({
 
         <a
           href={buttonLink}
-          className="mt-6 bg-yellow-400 hover:bg-yellow-500 text-black py-2 px-6 font-semibold rounded transition"
+          className="mt-4 lg:mt-6 bg-yellow-400 hover:bg-yellow-500 text-black py-2 px-4 md:px-6 font-semibold rounded transition text-sm md:text-base"
         >
           <Text
             propName="buttonText"
@@ -94,6 +95,7 @@ BreitlingStrap.schema = {
     buttonText: [{ type: 'paragraph', children: [{ text: 'DISCOVER STRAPS' }] }],
     buttonLink: '#',
     apiUrl: DEFAULT_API_URL,
+    imageIndex: 1, // Default to the strap image (index 1)
   }),
   sideEditProps: [
     {
@@ -118,6 +120,11 @@ BreitlingStrap.schema = {
       name: 'apiUrl',
       label: 'API URL',
       type: types.SideEditPropType.Text,
+    },
+    {
+      name: 'imageIndex',
+      label: 'Image Index',
+      type: types.SideEditPropType.Number,
     },
   ],
 }

@@ -11,7 +11,7 @@ import FlexCard from './custom/FlexCard'
 import HeroCatalog from './custom/HeroCatalog'
 import BreitlingStrap from './custom/BreitlingStrap'
 import GenderCard from './custom/GenderCard'
-import GenderCardItem from './custom/GenderCard/GenderCardItem'
+import GenderCardItem, { GenderCardMen, GenderCardWomen } from './custom/GenderCard/GenderCardItem'
 
 
 
@@ -33,6 +33,8 @@ const bricks: types.Theme[] = [
           BreitlingStrap,
           GenderCard,
           GenderCardItem,
+          GenderCardMen,
+          GenderCardWomen,
         ],
       },
     ],
