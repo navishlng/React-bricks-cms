@@ -7,13 +7,17 @@ import { ReactBricks } from 'react-bricks/rsc/client'
 
 import NextLink from '@/react-bricks/NextLink'
 import config from '@/react-bricks/config'
+import { useTippyErrorHandler } from '@/react-bricks/bricks/custom/hooks/useTippyErrorHandler'
 
 export default function ReactBricksApp({
   children,
 }: {
-  children: React.ReactNode
+  readonly children: React.ReactNode
 }) {
   const router = useRouter()
+  
+  // Initialize Tippy.js error handler
+  useTippyErrorHandler()
 
   const reactBricksConfig = {
     ...config,

@@ -1,7 +1,8 @@
 import React from 'react'
 import { types, Text, RichText } from 'react-bricks/rsc'
-import { PADDING_CLASSES, DEFAULT_API_URL } from '../../../utils/constants'
+import { PADDING_CLASSES, DEFAULT_API_URL } from '../../../../utils/constants'
 import DynamicImage from './DynamicImage'
+import ErrorBoundary from '../ErrorBoundary'
 
 interface BreitlingStrapProps {
   padding?: 'big' | 'medium' | 'small'
@@ -28,12 +29,22 @@ const BreitlingStrap: types.Brick<BreitlingStrapProps> = ({
     <div className={`flex flex-col lg:flex-row w-full max-w-6xl mx-auto justify-center items-center ${PADDING_CLASSES[padding]}`}>
       {/* ✅ Image block is now handled by a client component */}
       <div className="w-full lg:flex-1 flex justify-center items-center mb-6 lg:mb-0">
-        <DynamicImage
-          fallbackSrc="/bricks-preview-images/strap_horizontal.jpeg"
-          apiUrl={apiUrl}
-          externalImageSrc={externalImageSrc}
-          imageIndex={imageIndex}
-        />
+        <ErrorBoundary
+          fallback={
+            <img
+              src="/bricks-preview-images/strap_horizontal.jpeg"
+              alt="Breitling Strap (Fallback)"
+              className="w-full max-w-lg md:max-w-xl lg:max-w-4xl xl:max-w-5xl aspect-video object-cover"
+            />
+          }
+        >
+          <DynamicImage
+            fallbackSrc="/bricks-preview-images/strap_horizontal.jpeg"
+            apiUrl={apiUrl}
+            externalImageSrc={externalImageSrc}
+            imageIndex={imageIndex}
+          />
+        </ErrorBoundary>
       </div>
 
       {/* Text Block */}

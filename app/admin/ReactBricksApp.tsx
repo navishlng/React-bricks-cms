@@ -8,6 +8,7 @@ import { ReactBricks } from 'react-bricks'
 
 import NextLink from '@/react-bricks/NextLink'
 import config from '@/react-bricks/config'
+import { useTippyErrorHandler } from '@/react-bricks/bricks/custom/hooks/useTippyErrorHandler'
 
 const nunito = Nunito_Sans({
   adjustFontFallback: false,
@@ -21,9 +22,12 @@ const nunito = Nunito_Sans({
 export default function ReactBricksApp({
   children,
 }: {
-  children: React.ReactNode
+  readonly children: React.ReactNode
 }) {
   const router = useRouter()
+  
+  // Initialize Tippy.js error handler
+  useTippyErrorHandler()
 
   // Color Mode Management
   const savedColorMode =
